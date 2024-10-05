@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>todo list</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+
+        <div id="container">
+            <div class="addWrapper">
+
+                    <form action="/add" method="post" id="addData">
+                        <input type="text" name="todo" id="todoInput" placeholder="someting to do">
+                        <input type="submit">
+                    </form>
+            
+            </div>
+                
+            <div id="data">  
+                <% if (locals.data) { %>
+
+                    <% data.forEach((item) => { %>
+                        
+                        <form action="/done" class="todos">
+                            <input type="checkbox">
+
+                            <h3><%= item.task_id%></h3>
+                            <h2><%= item.todo %></h2>
+                            
+                            <button formaction="/edit" onclick="editTodo()">
+                                <div id="circle"></div>
+                            </button>
+                        </form>
+
+                    <% }) %>
+                
+                <% } else { %>
+                    <h1>No tasks yet!</h1>
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script  src="./script.js">
+
+
+    </script>
+</body>
+</html>
