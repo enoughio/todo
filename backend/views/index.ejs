@@ -12,10 +12,10 @@
         <div id="container">
             <div class="addWrapper">
 
-                    <form action="/add" method="post" id="addData">
-                        <input type="text" name="todo" id="todoInput" placeholder="someting to do">
-                        <input type="submit">
-                    </form>
+                <form id="addData" action="/add" method="POST"> <!-- Set the action to POST to /add -->
+                    <input type="text" name="todo" id="todoInput" placeholder="Something to do">
+                    <input type="submit" value="Add Todo">
+                </form>
             
             </div>
                 
@@ -47,7 +47,8 @@
 
     </main>
 
-    <script  src="./script.js">
+    <script >
+
 
 
     </script>

@@ -29,6 +29,8 @@ db.connect()
 // set middleware
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"));
+app.use(express.json());
+
 
 // Function to fetch data from the database
 const fetchData = async () => {
@@ -62,18 +64,19 @@ app.post("/add", async (req,res) => {
 
     try {
         //adding data
+        console.log("adding data")
           const response = await db.query("INSERT INTO todo (todo) VALUES ($1);", [req.body.todo] );
           console.log(response);
+
           if (response.rowCount === 0) {
             // If no rows were updated, return a 404 error
             return res.status(404).send("Todo not found");
            }
         
-        //resending data       ----------- for now
-        const data = await fetchData();  // Fetch data from the database
+      //resending data       -----------     for now
+    //   const data = await fetchData();  // Fetch data from the database
       res.redirect("/");
     
-
    } catch (error) {
        console.log("error in fatching data")
        return res.status(404).send("error in adding tasks");
