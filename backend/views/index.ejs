@@ -11,14 +11,7 @@
         <h1>My Todo</h1>
 
         <div id="container">
-            <div class="addWrapper">
-
-                <form id="addData" action="/add" method="POST"> <!-- Set the action to POST to /add -->
-                    <input type="text" name="todo" id="todoInput" placeholder="Something to do">
-                    <input type="submit" value="Add Todo">
-                </form>
-            
-            </div>
+      
                 
 
 
@@ -54,6 +47,15 @@
                 <% } %>
             </div>
 
+            <div class="addWrapper">
+
+                <form id="addData" action="/add" method="POST"> <!-- Set the action to POST to /add -->
+                    <input type="text" name="todo" id="todoInput" placeholder="Something to do">
+                    <input type="submit" value="Add Todo">
+                </form>
+            
+            </div>
+
         </div>
 
     
@@ -79,6 +81,7 @@
 
 
         const formSubmit = (id) => {
+            
             const form = document.getElementById('todoForm');
             form.action = `/done/${id}`
             form.submit()

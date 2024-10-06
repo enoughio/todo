@@ -64,8 +64,10 @@ app.post("/add", async (req,res) => {
 
     try {
         //adding data
+        const todo = req.body.todo;
+       
         console.log("adding data")
-          const response = await db.query("INSERT INTO todo (todo) VALUES ($1);", [req.body.todo] );
+          const response = await db.query("INSERT INTO todo (todo) VALUES ($1);", [todo] );
           
           if (response.rowCount === 0) {
             // If no rows were updated, return a 404 error
