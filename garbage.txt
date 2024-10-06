@@ -91,3 +91,51 @@ app.listen(PORT, () => console.log("server running at http://localhost:3000"));
               
             
             </div>
+
+---------------------------
+
+
+      <button formaction="/edit/<%= item.task_id %>" type="submit"> <!-- Ensure proper formaction -->
+                                <div id="circle"></div>
+       </button>
+
+
+----------------
+
+<form action="/done" method="POST" class="todos">
+    <input type="checkbox" onchange="this.form.submit()">
+    <input type="hidden" name="task_id" value="<%= item.task_id %>"> <!-- Hidden input with task_id -->
+
+    <h3><%= item.task_id %></h3>
+    <h2><%= item.todo %></h2>
+
+    <a href="/edit/<%= item.task_id %>"> 
+        <div id="circle"></div>
+    </a>
+</form>
+
+
+
+or this 
+
+
+<form id="todoForm" method="POST" class="todos">
+    <input type="checkbox" id="taskCheckbox" value="<%= item.task_id %>" name="task_id" onchange="submitForm(<%= item.task_id %>)">
+
+    <h3><%= item.task_id %></h3>
+    <h2><%= item.todo %></h2>
+
+    <a href="/edit/<%= item.task_id %>"> 
+        <div id="circle"></div>
+    </a>
+</form>
+
+<script>
+    function submitForm(taskId) {
+        const form = document.getElementById('todoForm');
+        form.action = `/done/${taskId}`; // Dynamically set the action URL
+        form.submit(); // Submit the form
+    }
+</script>
+
+---------------------
