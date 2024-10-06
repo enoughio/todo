@@ -66,8 +66,7 @@ app.post("/add", async (req,res) => {
         //adding data
         console.log("adding data")
           const response = await db.query("INSERT INTO todo (todo) VALUES ($1);", [req.body.todo] );
-          console.log(response);
-
+          
           if (response.rowCount === 0) {
             // If no rows were updated, return a 404 error
             return res.status(404).send("Todo not found");
@@ -86,7 +85,7 @@ app.post("/add", async (req,res) => {
 
 
 //edit
-app.patch("/edit/:id", async(req,res) => {
+app.post("/edit/:id", async(req,res) => {
     // inmsert todo to database
     try {
         const id = req.params.id;

@@ -5,3 +5,5 @@ clear edge cases  -- handling too long todos
 add clock 
 add weather app
 add dynameic serial No
+make vanis effectt
+implement delete post patch req 
