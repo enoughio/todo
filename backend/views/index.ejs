@@ -31,9 +31,11 @@
 
                             <h3><%= item.task_id %></h3>
                             <h2><%= item.todo %></h2>
-                            
-                        <a href="/edit/<%=  item.task_id %>"> <div id="circle"></div></a>
-                            
+                            <input type="hidden" value="<%= item.task_id>">
+                            <input type="text" value="<%= item.todo>" hidden="true">
+
+                            <button onclick="handelEdit('<%= item.task_id%>')" ></button>
+                            <button type="submit" formaction="`/edit`"></button>
                         </form>
 
                     <% }) %>
@@ -52,6 +54,14 @@
 
 
     <script >
+
+        const handelEdit = (id) => {
+            console.log("clicked")
+            // const form = document.getElementById('todoForm');
+            // form.action = `/edit/${id}`;
+            // form.submit();
+        }
+
 
         const formSubmit = (id) => {
             const form = document.getElementById('todoForm');

@@ -139,3 +139,20 @@ or this
 </script>
 
 ---------------------
+
+app.delete("/done/:id", async (req, res) => {
+    const id = req.params.id;  // Get the task ID from the URL
+
+    try {
+        const response = await db.query("DELETE FROM todo WHERE task_id = $1", [id]);
+        
+        if (response.rowCount === 0) {
+            return res.status(404).send("Task not found");
+        }
+
+        res.status(200).send("Task deleted successfully");
+    } catch (error) {
+        console.error("Error deleting task:", error);
+        res.status(500).send("Error deleting task");
+    }
+});
