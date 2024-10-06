@@ -8,6 +8,7 @@
 </head>
 <body>
     <main>
+        <h1>My Todo</h1>
 
         <div id="container">
             <div class="addWrapper">
@@ -24,15 +25,15 @@
 
                     <% data.forEach((item) => { %>
                         
-                        <form action="/done" class="todos">
-                            <input type="checkbox">
+                        <!-- <form action="/done/<%=item.task_id%>" method="post" class="todos"> -->
+                     <form id="todoForm" method="POST" class="todos">
+                            <input type="checkbox" onchange="formSubmit('<%= item.task_id %>')" value="<%= item.task_id %>">
 
-                            <h3><%= item.task_id%></h3>
+                            <h3><%= item.task_id %></h3>
                             <h2><%= item.todo %></h2>
                             
-                            <button formaction="/edit" onclick="editTodo()">
-                                <div id="circle"></div>
-                            </button>
+                        <a href="/edit/<%=  item.task_id %>"> <div id="circle"></div></a>
+                            
                         </form>
 
                     <% }) %>
@@ -48,6 +49,12 @@
     </main>
 
     <script >
+
+        const formSubmit = (id) => {
+            const form = document.getElementById('todoForm');
+            form.action = `/done/${id}`
+            form.submit()
+         }
 
 
 

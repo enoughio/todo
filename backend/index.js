@@ -106,8 +106,9 @@ app.patch("/edit/:id", async(req,res) => {
 })
 
 
+
 //done
-app.delete("/done/:id", async (req, res) => {
+app.post("/done/:id", async (req, res) => {
     try {
         // Get the id from request parameters
         const id = req.params.id;
@@ -130,6 +131,7 @@ app.delete("/done/:id", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 
 
