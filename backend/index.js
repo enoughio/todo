@@ -85,20 +85,26 @@ app.post("/add", async (req,res) => {
 
 
 //edit
-app.post("/edit/:id", async(req,res) => {
+app.post("/edit", async(req,res) => {
     // inmsert todo to database
+    console.log(req.body)
     try {
-        const id = req.params.id;
-        const todo = req.body.todo;
+        const id = req.body.id;
+        const todo = req.body.newTodo;
         console.log("called edit route")
-        const response = await db.query("UPDATE todo SET todo = $1 WHERE task_id = $1", [todo, id]);
+        
+        const response = await db.query(
+            "UPDATE todo SET todo = $1 WHERE task_id = $2", 
+            [todo, id]
+        );
+
         if (response.rowCount === 0) {
             // If no rows were updated, return a 404 error
             return res.status(404).send("Todo not updated");
         }
         res.redirect("/");
     } catch (error) {
-        console.log("error in fatching data")
+        console.log("error in fatching data at edit")
         res.redirect("/");
     }
 

@@ -20,30 +20,38 @@
             
             </div>
                 
-            <div id="data">  
-                <% if (locals.data) { %>
 
-                    <% data.forEach((item) => { %>
-                        
-                        <!-- <form action="/done/<%=item.task_id%>" method="post" class="todos"> -->
-                     <form id="todoForm" method="POST" class="todos">
-                            <input type="checkbox" onchange="formSubmit('<%= item.task_id %>')" value="<%= item.task_id %>">
 
-                            <h3><%= item.task_id %></h3>
-                            <h2><%= item.todo %></h2>
-                            <input type="hidden" value="<%= item.task_id>">
-                            <input type="text" value="<%= item.todo>" hidden="true">
+    <div id="data">   
+        <% if (locals.data) { %>
+                <% data.forEach((item) => { %>
+                    
+                    <!-- Todo Form -->
+                    <form id="todoForm" method="POST" class="todos">
+                        <!-- Checkbox for marking task done -->
+                        <input class="tohide<%= item.task_id %>" name="deletId" type="checkbox" onchange="formSubmit('<%= item.task_id %>')" value="<%= item.task_id %>">
 
-                            <button onclick="handelEdit('<%= item.task_id%>')" ></button>
-                            <button type="submit" formaction="`/edit`"></button>
-                        </form>
+                        <!-- Display task ID and description -->
+                        <h3 class="tohide<%= item.task_id %>"><%= item.task_id %></h3>
+                        <h2 class="tohide<%= item.task_id %>"><%= item.todo %></h2>
 
-                    <% }) %>
+                        <!-- Edit button -->
+                        <button type="button" class="tohide<%= item.task_id %>" onclick="handleEdit('<%= item.task_id %>')">Edit</button>
+
+                        <!-- Hidden edit form -->
+                        <div id="toUnhide<%= item.task_id %>" hidden>
+                            <input type="hidden" name="id" value="<%= item.task_id %>">
+                            <input type="text" name="newTodo" value="<%= item.todo %>">
+                            <!-- <input type="submit" value="Save"> -->
+                             <button type="submit" formaction="/edit" ></button>
+                        </div>
+                    </form>
+
+                <% }) %>
                 
                 <% } else { %>
                     <h1>No tasks yet!</h1>
                 <% } %>
-
             </div>
 
         </div>
@@ -55,12 +63,19 @@
 
     <script >
 
-        const handelEdit = (id) => {
-            console.log("clicked")
-            // const form = document.getElementById('todoForm');
-            // form.action = `/edit/${id}`;
-            // form.submit();
-        }
+    const handleEdit = (id) => {
+            console.log("Edit button clicked for task ID:", id);
+            
+            // Hide elements with class tohide[id]
+            const hideElements = document.querySelectorAll('.tohide' + id);
+            hideElements.forEach((elem) => {
+                elem.setAttribute('hidden', true);
+            });
+
+            // Show the hidden form for editing
+            const unhideElement = document.getElementById('toUnhide' + id);
+            unhideElement.removeAttribute('hidden');
+        };
 
 
         const formSubmit = (id) => {

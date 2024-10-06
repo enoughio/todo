@@ -19,3 +19,8 @@ INSERT INTO todo (todo) VALUES ('Water the plants');
 INSERT INTO todo (todo) VALUES ('Call the doctor');
 INSERT INTO todo (todo) VALUES ('Prepare presentation');
 
+
+UPDATE todo 
+SET todo = 'la la la' 
+WHERE task_id = 1;
+
