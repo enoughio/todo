@@ -1,6 +1,6 @@
 stop reload of page
 do caching of page
-modularize files
+modularize files  --  starting
 clear edge cases  -- handling too long todos
 add clock 
 add weather app
