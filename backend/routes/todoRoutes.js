@@ -6,13 +6,15 @@ import { fetchData, addTodo, editTodo, deleteTodo } from "../controllers/todoCon
 const router = express.Router();
 
 
-//aleernative way
-
+//aleernative way 
+// here we dont have to chaeck for error twice
 // router.get('/', fetchData)
 // router.post('/add', addTodo)
 // router.post('/edit', editTodo)
 // router.post('/delete', deleteTodo);
 
+
+// an alterrnative is theat the fyctions can handel therir error themself and communicate from client side
 
 // Root route: Display the home page with all tasks
 router.get("/", async (req, res) => {
