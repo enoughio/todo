@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 //aleernative way
+
 // router.get('/', fetchData)
 // router.post('/add', addTodo)
 // router.post('/edit', editTodo)
