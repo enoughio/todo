@@ -1,18 +1,23 @@
-import pg from 'pg'
+import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const db = new pg.Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'todo',
-    password: 'aniket',
-    port: 5432,
-})
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT || 5432,
+});
+
 db.connect()
-.then(()=>{
+.then(() => {
     console.log("Connected to PostgreSQL");
-}).catch((err) => {
-        console.error('Connection failed', err.stack)
-        process.exit(1)  // Exit the process with an error code
 })
+.catch((err) => {
+    console.error('Connection failed', err.stack);
+    process.exit(1);
+});
 
 export default db;

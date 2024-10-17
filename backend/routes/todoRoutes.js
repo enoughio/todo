@@ -1,20 +1,26 @@
 import express from "express";
 // also  can import middelewhere for auth
-import { fetchData, addTodo, editTodo, deleteTodo } from "../controllers/todoController.js";
+import { getTodos, addTodo, editTodo, deleteTodo } from "../controllers/todoController.js";
 
 // Create a new router instance
 const router = express.Router();
 
 
 //aleernative way 
-// here we dont have to chaeck for error twice
-// router.get('/', fetchData)
-// router.post('/add', addTodo)
-// router.post('/edit', editTodo)
-// router.post('/delete', deleteTodo);
+router.get('/', getTodos)
+router.post('/add', addTodo)
+router.post('/edit', editTodo)
+router.post('/delete/:id', deleteTodo);
 
 
-// an alterrnative is theat the fyctions can handel therir error themself and communicate from client side
+
+export default router;
+
+
+
+
+/*
+     made according to ejs
 
 // Root route: Display the home page with all tasks
 router.get("/", async (req, res) => {
@@ -71,3 +77,4 @@ router.post("/done/:id", async (req, res) => {
 
 // Export the router so it can be used in the main application
 export default router;
+*/
