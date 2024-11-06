@@ -1,0 +1,40 @@
+@import "../../global.css";
+
+.weapper{
+ 
+    background-color: var(--trinary-color);
+    margin: .5rem 1rem; 
+    padding: .7rem;
+    border-radius: 15px;
+}   
+
+
+#todo{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#Cbox{
+    width: 25px;
+    height: 25px;
+}
+
+#button{
+    background-color: white;
+    width: 7%;
+    text-align: center;
+    border-radius: 5px;
+    padding: .41rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+.text{
+    max-width: 50%; 
+    text-align: left;
+    color: white;
+}

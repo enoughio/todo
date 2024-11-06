@@ -1,14 +1,23 @@
+import React, { useContext, useState } from 'react';
+import axios, { Axios } from 'axios';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Edit from './components/todo/Edit.jsx';
+import { todoContext } from './context/getTodo.jsx';
+import Container from './components/Container.jsx';
+import Todo from './components/todo/Todo.jsx';
 
-function App() {
+const App = () => {
+
 
   return (
-    <div className="App">
-        {
-          data
-        }
+    <div className='app'>
+      <Container />
+
+   
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

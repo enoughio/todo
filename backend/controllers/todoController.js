@@ -6,7 +6,7 @@ import { fetchData } from "../helpers/fetchData.js";
 export const getTodos = async (req, res) => {
     try {
         const todos = await fetchData();  // Call the helper function to fetch data
-       return res.status(200).json({ data: todos });
+       return res.status(200).json({  todos });
     } catch (error) {
        return res.status(500).json({ error: error.message });
     }
