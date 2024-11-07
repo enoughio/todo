@@ -1,0 +1,29 @@
+#wrapper{
+    /* margin: 10px; */
+    /* border: 3px red solid ; */
+    min-height: 10vh  ;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #318ad7;
+    border-bottom-left-radius: 1rem ;
+    border-bottom-right-radius: 1rem;
+    
+}
+
+
+#addButton{
+    
+    /* position: absolute;
+    bottom: 9.7%;
+    left: 48%; */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* transform: translate(-50%, 50%); */
+  }

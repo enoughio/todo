@@ -2,15 +2,11 @@
 
 #editForm{
     padding: 1rem;
-    width: 70%;
-    margin-bottom: 20%;
-    /* height: 2 */
-    /* background-color: #8985cb; */
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1vh;
-    flex-direction: column;
+    
 }
 
  #textBox{

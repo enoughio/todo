@@ -5,7 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import Edit from './components/todo/Edit.jsx';
 import { todoContext } from './context/getTodo.jsx';
 import Container from './components/Container.jsx';
+import Add from './components/Add.jsx';
 import Todo from './components/todo/Todo.jsx';
+
+
 
 const App = () => {
 
@@ -14,7 +17,10 @@ const App = () => {
     <div className='app'>
       <Container />
 
-   
+
+      <Add />
+
+      
 
     </div>
   )

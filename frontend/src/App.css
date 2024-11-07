@@ -36,5 +36,9 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: column;
    background-color: #7E97B9; /* Un-commented this line */
+   position: relative;
 }
+
+
