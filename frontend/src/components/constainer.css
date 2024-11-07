@@ -1,0 +1,42 @@
+  @import '../global.css';
+
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    padding:  10px 0;
+    padding-bottom: 70px;
+    min-height: 50vh  ;
+    max-height: 60vh;
+    width: 45%;
+    background-color: var(--dark-primary-color);
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+
+
+
+
+
+
+/* Styling the scrollbar track */
+::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+
+/* Styling the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #2f4ba1; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Styling the scrollbar track background */
+::-webkit-scrollbar-track {
+  overflow: hidden;
+  
+  background-color: #f1f1f1; /* Background color of the scrollbar track */
+  border-radius: 10px;
+}

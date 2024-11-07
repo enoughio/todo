@@ -1,0 +1,44 @@
+:root {
+   /* Theme Variables */
+   --primary-color: #1D2778;
+   --secondary-color: #3F5199;
+   --background-color: #7E97B9;
+   --text-color: #ffffff;
+   
+   /* Dark Theme Variables */
+   --dark-background: #181818;
+   --dark-text-color: #f1f1f1;
+   --dark-primary-color: #1e88e5;
+ 
+   /* Font Variables */
+   --font-family: 'Roboto', sans-serif;
+   --heading-font-family: 'Poppins', sans-serif;
+   --font-size-small: 14px;
+   --font-size-medium: 16px;
+   --font-size-large: 24px;
+ 
+   /* Spacing Variables */
+   --padding-small: 8px;
+   --padding-medium: 16px;
+   --padding-large: 24px;
+   
+   /* Border Radius */
+   --border-radius: 5px;
+ 
+   /* Transition for smooth theme changes */
+   --transition-time: 0.3s ease;
+ }
+ 
+
+ .app {
+   width: 100%;
+   min-height: 100VH;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background-color: #7E97B9; /* Un-commented this line */
+   position: relative;
+}
+
+
