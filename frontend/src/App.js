@@ -12,15 +12,10 @@ import Todo from './components/todo/Todo.jsx';
 
 const App = () => {
 
-
   return (
     <div className='app'>
       <Container />
-
-
       <Add />
-
-      
 
     </div>
   )

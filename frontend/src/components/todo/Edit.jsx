@@ -1,36 +1,53 @@
-import React, { useRef } from 'react'
-import './edit.css'
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import instance from "../../utils/Api";
+import "./edit.css";
 
-function Edit({showEdit, value}) {
+function Edit({ showEdit, value }) {
+  const nveigator = useNavigate();
+  const todo = useRef();
+  // console.log(value);
 
-  const todo = useRef()
-  console.log(value)
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(todo.current.value);
-    showEdit()
-  }
 
-  // let data = [
+    try {
+      const  res  = await instance.post("/edit",{
+        newTodo: todo.current.value,
+        id: 74
+      });
 
-  //     {todo_id : 1, todo : 'do nothing'},
-  //     {todo_id : 2, todo : 'do nothing'},
-  //     {todo_id : 3, todo : 'do nothing'},
-  //     {todo_id : 4, todo : 'do nothing'},
-  //     {todo_id : 5, todo : 'do nothing'}
+      const {data} = res.data;
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+    // console.log(todo.current.value);
 
-  //   ]
+    showEdit();
+  };
+
 
 
   return (
-    // <div id='editCont' >
-      <form id='editForm' onSubmit={(e) => handleSubmit(e)}  >
-              <input ref={todo} type="text" id='textBox' name='todo' defaultValue={value} />
-              <button type='submit' onSubmit={()=>{handleSubmit()}} >edit</button>
-      </form>
-    // </div>
-  )
+    <form id="editForm" onSubmit={(e) => handleSubmit(e)}>
+      <input
+        ref={todo}
+        type="text"
+        id="textBox"
+        name="newTodo"
+        defaultValue={value}
+      />
+      <button
+        type="submit"
+        onSubmit={() => {
+          handleSubmit();
+        }}
+      >
+        edit
+      </button>
+    </form>
+  );
 }
 
-export default Edit
+export default Edit;

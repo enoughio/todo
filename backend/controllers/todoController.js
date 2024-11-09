@@ -42,6 +42,11 @@ export const addTodo = async (req, res) => {    // directly accessing requested 
 // Edit an existing task
 export const editTodo = async (req, res) => {
     try {
+        if (Object.keys(req.body).length === 0) {
+            // Handle the case of an empty request body
+            console.log("Empty request body received");
+            return res.status(200).json({ message: "Empty request processed" }); }
+
         const { id, newTodo } = req.body;
         if(newTodo.length == 0){
            return res.status(400).json({ error: "todo cannot be updated" }); 
