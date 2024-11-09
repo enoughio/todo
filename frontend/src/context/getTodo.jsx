@@ -4,13 +4,13 @@ import Api from '../utils/Api';
 export const todoContext = createContext();
 
 const Context = (props) => {
-    const [todo, settodo] = useState([]); 
+    const [todos, setTodos] = useState([]); 
 
     const getTodos = async () => {
         try {
             const { data } = await Api.get('/');
             // console.log(data.todos);
-            settodo(data.todos); 
+            setTodos(data.todos); 
         } catch (error) {
             console.error(error);
         }
@@ -21,7 +21,7 @@ const Context = (props) => {
     }, []);
 
     return (
-        <todoContext.Provider value={[todo, settodo]}>
+        <todoContext.Provider value={[todos, setTodos]}>
             {props.children} 
         </todoContext.Provider>
     );
