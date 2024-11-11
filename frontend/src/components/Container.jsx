@@ -5,7 +5,7 @@ import { todoContext } from "../context/getTodo";
 
 const Container = () => {
   const [todos, setTodos] = useContext(todoContext);
-
+  
   return (
     <div className="container">
       {todos.map((todo, index) => {
