@@ -9,15 +9,15 @@ function Edit({ task, showEdit }) {
     e.preventDefault();
 
     try {
-      const res = await instance.post("/edit", {
+      await instance.post("/edit", { //not accepting anything form backend for security pourpos
         newTodo: todo.current.value,
-        id: task.task_id // Ensure `id` is dynamically set if needed
+        id: task.task_id
       });
 
-      const { data } = res.data;
-      console.log(data);
-      showEdit();
-      // Call showEdit to close the edit form
+      // const { data } = res.data;
+      // console.log(data);
+      showEdit(todo.current.value);  // function to show and hide edit containner
+
     } catch (error) {
       console.error("Error occurred while editing:", error);
     }

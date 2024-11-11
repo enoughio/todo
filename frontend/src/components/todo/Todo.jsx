@@ -12,13 +12,14 @@ function Todo({ task }) {
   const [todo, setTodo ] = useState(task.todo)
   const todoDiv = useRef();
 
-  const showEdit = () => {   
+  const showEdit = (newTodo) => {     // function to show and hide edit containner
     setShow(prev => !prev)
+    setTodo(newTodo);
   };
 
-  const EditTodo = () => {
-    setShow(prev => !prev);
-  }
+  // const EditTodo = () => {       //no need
+  //   setShow(prev => !prev);
+  // }
 
   const handleCheckbox = async (id) => {
 
@@ -30,8 +31,6 @@ function Todo({ task }) {
       {!show && (
         <form id="todo" action="">
           {!show && <button  id="button" onClick={()=>showEdit()}> Edit </button>}
-       
-
           <div className="text" ref={todoDiv}>
             {todo}
           </div>
