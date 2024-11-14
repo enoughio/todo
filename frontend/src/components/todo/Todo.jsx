@@ -1,22 +1,38 @@
 import React, { useRef, useState } from "react";
 import "./todo.css";
 import instance from "../../utils/Api";
-import Edit from "./Edit";
 import { Link, useNavigate } from "react-router-dom";
+import Action from "./Action";
 
 function Todo({ task, handelDeletion }) {
   const [show, setShow] = useState(false);
-  const [todo, setTodo] = useState(task.todo);
+  const [todo, setTodo] = useState(task.todo);   // store todo to use in edit opn
   const todoDiv = useRef();
 
-  const showEdit = (newTodo) => {
+  const showEdit = async (newTodo) => {
     // function to show and hide edit containner
-
-    
-
     setShow((prev) => !prev);
     setTodo(newTodo);
   };
+
+
+  const EditAction = async ( todo) => {   
+
+    const some = {
+      newTodo: todo,
+      id: task.task_id
+    }
+
+    try {                                   //not accepting anything form backend for security pourpos
+      await instance.post('/edit', 
+        some, 
+      );      
+    } catch (error) {
+      console.error("Error occurred while editing:", error);
+    }
+
+  } 
+
 
   const handleCheckbox = async (id) => {
     try {
@@ -27,9 +43,11 @@ function Todo({ task, handelDeletion }) {
     }
   };
 
+
+
   return (
-    <div className="weapper">
-      {show && <Edit task={task} showEdit={showEdit} />}{" "}
+    <div className="weapper">                                             
+      {show && <Action text='Edit' preVal={task.todo} show={showEdit} action={EditAction} />}    {/* { here i have removed dependencies on parent on Action } */}
       {!show && (
         <form id="todo" action="">
           {!show && (

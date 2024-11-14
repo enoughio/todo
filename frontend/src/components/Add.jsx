@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './add.css'
 import { RiAddLargeFill } from "react-icons/ri";
-import AddTodo from './todo/AddTodo.jsx';
+import Action from './todo/Action.jsx';
 
 
 const Add = () => {
@@ -17,7 +17,7 @@ const Add = () => {
   return (
     
       <div id='wrapper'>
-      {add && <AddTodo />}
+      {add && <Action />}
 
     {!add && 
         <div id="addButton" onClick={addTodo}>
