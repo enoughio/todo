@@ -24,6 +24,8 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // Use routes
+
+
 app.use("/", todoRoutes);
 
 // Start the server

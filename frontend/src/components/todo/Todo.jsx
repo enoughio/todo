@@ -4,53 +4,55 @@ import instance from "../../utils/Api";
 import Edit from "./Edit";
 import { Link, useNavigate } from "react-router-dom";
 
-
-function Todo({ task }) {
-
+function Todo({ task, handelDeletion }) {
   const [show, setShow] = useState(false);
-  // const {task_id, todo} = task;
-  const [todo, setTodo ] = useState(task.todo)
+  const [todo, setTodo] = useState(task.todo);
   const todoDiv = useRef();
 
-  const showEdit = (newTodo) => {     // function to show and hide edit containner
-    setShow(prev => !prev)
+  const showEdit = (newTodo) => {
+    // function to show and hide edit containner
+
+    
+
+    setShow((prev) => !prev);
     setTodo(newTodo);
   };
 
-  // const EditTodo = () => {       //no need
-  //   setShow(prev => !prev);
-  // }
-
   const handleCheckbox = async (id) => {
-
+    try {
+      await instance.post("/delete/" + id); // if deletion is successful
+      handelDeletion(id); // then call handleDelete
+    } catch (error) {
+      console.error("Error occurred while Deleting:", error);
+    }
   };
 
   return (
     <div className="weapper">
-      {show && <Edit  task={task}  showEdit={showEdit} />}{" "}
+      {show && <Edit task={task} showEdit={showEdit} />}{" "}
       {!show && (
         <form id="todo" action="">
-          {!show && <button  id="button" onClick={()=>showEdit()}> Edit </button>}
+          {!show && (
+            <button id="button" onClick={() => showEdit()}>
+              {" "}
+              Edit{" "}
+            </button>
+          )}
           <div className="text" ref={todoDiv}>
             {todo}
           </div>
           <input
             id="Cbox"
             onClick={() => handleCheckbox(task.task_id)}
-            type="checkbox"            
+            type="checkbox"
           />
-
         </form>
       )}
     </div>
   );
 }
 
-
 export default Todo;
-
-
-
 
 /*
 

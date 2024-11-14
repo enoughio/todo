@@ -2,20 +2,17 @@ import React, { useEffect, useRef } from "react";
 import instance from "../../utils/Api";
 import "./edit.css";
 
-function Edit({ task, showEdit }) {
+function Add() {
   const todo = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await instance.post("/edit", { //not accepting anything form backend for security pourpos
-        newTodo: todo.current.value,
-        id: task.task_id
-      });
+
 
       
-      showEdit(todo.current.value);  // function to show and hide edit containner
+    //   showEdit(todo.current.value);  // function to show and hide edit containner
 
     } catch (error) {
       console.error("Error occurred while editing:", error);
@@ -30,16 +27,16 @@ function Edit({ task, showEdit }) {
       <input
         ref={todo}
         type="text"
-        id="textBox"
+        id="addTodoText"
         name="newTodo"
-        defaultValue={task.todo}
+        placeholder="add new todo"
       />
 
       <button type="submit">
-        Edit
+        Add
       </button>
     </form>
   );
 }
 
-export default Edit;
+export default Add;
