@@ -17,7 +17,7 @@ const Add = () => {
   return (
     
       <div id='wrapper'>
-      {add && <Action />}
+      {add && <Action text='Add' show={addTodo}    />}
 
     {!add && 
         <div id="addButton" onClick={addTodo}>
