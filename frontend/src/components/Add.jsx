@@ -26,7 +26,6 @@ const Add = () => {
         });
 
         const todoData = data.todos;  //  the /add response todos as 
-
         // console.log(data.data);
         setTodos(todoData);
 
