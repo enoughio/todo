@@ -72,7 +72,84 @@ function Todo({ task, handelDeletion }) {
 
 export default Todo;
 
+
+
+
+
 /*
+
+
+// In the Todo component
+import React, { useRef, useState } from "react";
+import "./todo.css";
+import instance from "../../utils/Api";
+import Action from "./Action";
+
+function Todo({ task, handleDeletion }) {
+  const [show, setShow] = useState(false);
+  const [todo, setTodo] = useState(task.todo); // Store the current task's content
+  // const navigate = useNavigate(); // Imported for potential routing needs
+
+  const toggleEdit = () => {
+    setShow((prev) => !prev);
+  };
+
+  const text = useRef();
+
+  const EditAction = async (newTodo) => {
+    const updatedTask = {
+      newTodo,
+      id: task.task_id,
+    };
+
+    try {
+      await instance.post('/edit', updatedTask);
+      setTodo(newTodo); // Update the local state with the new todo
+    } catch (error) {
+      console.error("Error occurred while editing:", error);
+    }
+  };
+
+  const handleCheckbox = async (id) => {
+    try {
+      await instance.post(`/delete/${id}`); // Send deletion request
+      handleDeletion(id); // Call parent function to update tasks
+    } catch (error) {
+      console.error("Error occurred while deleting:", error);
+    }
+  };
+
+  return (
+    <div className="wrapper">
+      {show && (
+        <Action text='Edit' preVal={todo} show={toggleEdit} action={EditAction} />
+      )}
+      {!show && (
+        <form id="todo" action="">
+          <button id="button" type="button" onClick={toggleEdit}>
+            Edit
+          </button>
+          <div className="text" ref={text}>{todo}</div>
+          <input
+            type="checkbox"
+            onChange={() => handleCheckbox(task.task_id)}
+          />
+        </form>
+      )}
+    </div>
+  );
+}
+
+export default Todo;
+
+
+
+
+
+
+
+
+
 
 
 import React, { useRef, useState } from "react";

@@ -1,33 +1,23 @@
 import React, { useEffect, useRef } from "react";
 import instance from "../../utils/Api";
-import "./edit.css";
+import "./action.css";
 
 function Action({ text, preVal, show, action }) {
   const inputField = useRef();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
       const inputValue = inputField.current.value.trim(); // To avoid empty spaces being entered as valid
 
       if (inputValue.length === 0) {
-        throw new Error("Please enter valid data.");
+        throw new Error("Please enter valid data.");    
       }
 
       // Call the action function if provided
       if (action) {
         action(inputValue);
       }
-
-      // moved this to parent
-      // try {
-      //   await instance.post("/edit", { //not accepting anything from backend for security purposes
-      //     newTodo: inputField.current.value,
-      //     // id: task.task_id
-      //   });
-      // } catch (error) {
-      //   console.error("Error occurred while editing:", error);
-      // }
 
       // Function to show and hide edit container
       if (show) {

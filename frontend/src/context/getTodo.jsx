@@ -1,18 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react';
-import Api from '../utils/Api';
+import React, { createContext, useEffect, useState } from "react";
+import instance from "../utils/Api";
 
 export const todoContext = createContext();
 
 const Context = (props) => {
-    const [todos, setTodos] = useState([]); 
+    const [todos, setTodos] = useState([]);
 
     const getTodos = async () => {
         try {
-            const { data } = await Api.get('/');
-            // console.log(data.todos);
+            
+            const {data} = await instance.get("/");
             setTodos(data.todos); 
+
         } catch (error) {
-            console.error(error);
+            console.error("Error fetching todos:", error);
         }
     };
 
@@ -22,7 +23,7 @@ const Context = (props) => {
 
     return (
         <todoContext.Provider value={[todos, setTodos]}>
-            {props.children} 
+            {props.children}
         </todoContext.Provider>
     );
 };
