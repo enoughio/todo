@@ -31,6 +31,7 @@ function Action({ text, preVal, show, action }) {
   return (
     <form id="editForm" onSubmit={handleSubmit}>
       <input
+        autoFocus
         ref={inputField}
         type="text"
         id="addTodoText"

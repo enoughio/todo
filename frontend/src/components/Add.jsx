@@ -2,15 +2,16 @@ import React, { useContext, useState } from 'react';
 import './add.css'
 import { RiAddLargeFill } from "react-icons/ri";
 import Action from './todo/Action.jsx';
-import { todoContext } from '../context/getTodo.jsx';
+import { TodoContext } from '../context/TodoContext.jsx';
 import instance from '../utils/Api.jsx';
 
 
 const Add = () => {
 
-  const [todos, setTodos] = useContext(todoContext);
+  const [todos, setTodos] = useContext(TodoContext);
     // add on backend and also update todos of usecontest
   const [add, setAdd] = useState(false);
+  
 
 
     const show = () => {

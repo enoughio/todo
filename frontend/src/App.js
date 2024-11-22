@@ -1,24 +1,26 @@
-import React, { useContext, useState } from 'react';
-import axios, { Axios } from 'axios';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import Edit from './components/todo/Action.jsx';
-import { todoContext } from './context/getTodo.jsx';
-import Container from './components/Container.jsx';
-import Add from './components/Add.jsx';
-import Todo from './components/todo/Todo.jsx';
-
-
+import React, { useEffect } from "react";
+import "./App.css";
+import Container from "./components/Container.jsx";
+import Add from "./components/Add.jsx";
+import ViewProvider from "./context/ViewContext.jsx";
+import { useTheme } from "./context/TheamContext.jsx";
 
 const App = () => {
+  const [isDarkTheme, toggleTheme] = useTheme(); // Correct destructuring
+
+  useEffect(() => {
+    console.log("Theme changed:", isDarkTheme ? "Dark" : "Light");
+  }, [isDarkTheme]);
 
   return (
-    <div className='app'>
-      <Container />
-      <Add />
-
+    <div className={`app ${isDarkTheme ? "dark" : "light"}`}>
+      <ViewProvider>
+        <button onClick={toggleTheme}>Toggle Theme</button> {/* Correct button */}
+        <Container />
+        <Add />
+      </ViewProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

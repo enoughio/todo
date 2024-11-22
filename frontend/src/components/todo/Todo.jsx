@@ -7,17 +7,17 @@ import Action from "./Action";
 function Todo({ task, handelDeletion }) {
   const [show, setShow] = useState(false);
   const [todo, setTodo] = useState(task.todo);   // store todo to use in edit opn
-  const todoDiv = useRef();
+  const todoDiv = useRef();    // refering todo text div
 
+  // function to show and hide edit containner
   const showEdit = async (newTodo) => {
-    // function to show and hide edit containner
     setShow((prev) => !prev);
     setTodo(newTodo);
   };
 
 
+  // perform edit operation
   const EditAction = async ( todo) => {   
-
     const some = {
       newTodo: todo,
       id: task.task_id
@@ -32,17 +32,6 @@ function Todo({ task, handelDeletion }) {
     }
 
   } 
-
-
-  const handleCheckbox = async (id) => {
-    try {
-      await instance.post("/delete/" + id); // if deletion is successful
-      handelDeletion(id); // then call handleDelete
-    } catch (error) {
-      console.error("Error occurred while Deleting:", error);
-    }
-  };
-
 
 
   return (
@@ -61,8 +50,8 @@ function Todo({ task, handelDeletion }) {
           </div>
           <input
             id="Cbox"
-            onClick={() => handleCheckbox(task.task_id)}
-            type="checkbox"
+            onClick={() => handelDeletion(task.task_id)}
+            type="radio"
           />
         </form>
       )}
@@ -158,7 +147,7 @@ import instance from "../../utils/Api";
 import Edit from "./Edit";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { todoContext } from "../../context/getTodo";
+import { todoContext } from "../../context/todoCintextContext";
 
 function Todo({ task }) {
   // const [todos, setTodos] = useContext(todoContext);  // get all todos

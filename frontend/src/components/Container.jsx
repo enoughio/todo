@@ -1,65 +1,53 @@
-import React, { useContext } from "react";
-import Todo from "./todo/Todo";
-// import "./container.css";
-import { todoContext } from "../context/getTodo";
-
-const Container = () => {
-  const [todos, setTodos] = useContext(todoContext);
-
-  console.log(todos)
-  const handleDeletion = (id) => {
-    // Update global todos by filtering out the task with the given ID
-    setTodos((prevTodos) => prevTodos.filter((task) => task.task_id !== id));
-  };
-
-  return (
-    <div className="container">
-        {Array.isArray(todos) && todos.length > 0 ? (
-            todos.map((task) => (
-                <Todo task={task} handleDeletion={handleDeletion} key={task.task_id} />
-            ))
-        ) : (
-            <p>No todos available</p> // Fallback UI
-        )}
-    </div>
-  );
-};
-
-export default Container;
-
-
-
-/*
 import React, { useContext, useEffect, useState } from "react";
 import Todo from "./todo/Todo";
-// import "./container.css";
-import { todoContext } from "../context/getTodo";
+import "./constainer.css";
+import instance from "../utils/Api";
+import { TodoContext } from "../context/TodoContext";
+import { useTheme } from "../context/TheamContext";
 
 const Container = () => {
-  const [todos] = useContext(todoContext);
-  const [tasks, setTasks] = useState([]); // Initialize with an empty array
+  const [todos, setTodos] = useContext(TodoContext);   // fast reflection on other components
 
   useEffect(() => {
-    // Synchronize tasks with the todos context whenever todos change
-    setTasks(todos);
+    if (todos && todos.length > 0) {
+      setTodos(todos);
+    }
   }, [todos]);
-
-  const handleDeletion = (id) => {
-    // Filter out the deleted task by its ID
-    setTasks((prevTasks) => prevTasks.filter((task) => task.task_id !== id));
-  };
-
+  
+  
+  // useEffect(() => {
+    //   console.log(todos);
+    // }, [todos]);
+    
+    
+    // perform delete operation  passing it as props
+    const handelDeletion = async (id) => {
+      console.log(id);
+      
+      {
+        try {
+          await instance.post("/delete/" + id); // if deletion is successful
+          setTodos(todos.filter((task) => task.task_id !== id));
+        } catch (error) {
+          console.error("Error occurred while Deleting:", error);
+        }
+      };
+      
+    }
+    
+    const [isDarktheam, toggelTheme] = useTheme();
+    useEffect(() => {
+      console.log("Theme changed:", isDarktheam ? "Dark" : "Light");
+    }, [isDarktheam]);
   return (
-    <div className="container">
-      {tasks.map((task) => (
-        <Todo task={task} handleDeletion={handleDeletion} key={task.task_id} />
-      ))}
+      <div className={`container ${isDarktheam ? "bg-pink-200" : "bg-red-200"}`}>
+      {todos.map((task, index) => {
+        return <Todo task={task} handelDeletion={handelDeletion} key={index} />;
+      })}
     </div>
+
+    
   );
 };
 
 export default Container;
-
-
-
-*/
