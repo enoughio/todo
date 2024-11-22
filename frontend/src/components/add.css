@@ -1,3 +1,5 @@
+@import '../global.css';
+
 #wrapper{
     /* margin: 10px; */
     /* border: 3px red solid ; */
@@ -6,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #318ad7;
+    background-color: var(--trinary-color);
     border-bottom-left-radius: 1rem ;
     border-bottom-right-radius: 1rem;
     

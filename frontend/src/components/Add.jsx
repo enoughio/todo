@@ -10,6 +10,8 @@ const Add = () => {
 
   const [todos, setTodos] = useContext(TodoContext);
     // add on backend and also update todos of usecontest
+    
+
   const [add, setAdd] = useState(false);
   
 
@@ -19,7 +21,6 @@ const Add = () => {
     }
     
     const addTodo = async (todo) => {
-
       try {
       
         const {data} = await instance.post('/add', {   

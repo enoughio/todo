@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Todo from "./todo/Todo";
-import "./constainer.css";
+import "./Container.css";
 import instance from "../utils/Api";
 import { TodoContext } from "../context/TodoContext";
 import { useTheme } from "../context/TheamContext";
@@ -13,17 +13,12 @@ const Container = () => {
       setTodos(todos);
     }
   }, [todos]);
-  
-  
-  // useEffect(() => {
-    //   console.log(todos);
-    // }, [todos]);
-    
+
     
     // perform delete operation  passing it as props
     const handelDeletion = async (id) => {
       console.log(id);
-      
+       
       {
         try {
           await instance.post("/delete/" + id); // if deletion is successful
@@ -34,13 +29,10 @@ const Container = () => {
       };
       
     }
-    
-    const [isDarktheam, toggelTheme] = useTheme();
-    useEffect(() => {
-      console.log("Theme changed:", isDarktheam ? "Dark" : "Light");
-    }, [isDarktheam]);
+
+
   return (
-      <div className={`container ${isDarktheam ? "bg-pink-200" : "bg-red-200"}`}>
+      <div className={`container`}>
       {todos.map((task, index) => {
         return <Todo task={task} handelDeletion={handelDeletion} key={index} />;
       })}

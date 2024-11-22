@@ -14,17 +14,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     position: relative;
-    /* background: #000; */
-}
-
- .light {
-  background-color: #4CAF50 !important;
-  color: #ffffff; /* Ensure text is visible */
-}
-
-.dark {
-  background-color: #1e88e5 !important;
-  color: #ffffff; /* Ensure text is visible */
+    background-color: var(--primary-color) !important;
 }
 
 

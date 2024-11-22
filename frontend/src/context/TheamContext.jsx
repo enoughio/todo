@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 export const TheamContext = createContext()
 
@@ -14,9 +14,14 @@ const TheamProvider = (props) =>{
         setDarkTheam(prev => !prev)
     }
 
+    const theme = isDarktheam ? 'dark' : 'light';
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme)
+    }, [isDarktheam])
+    
 
     return(
-
         <TheamContext.Provider value={[isDarktheam, toggelTheme]}>
           {props.children}
     </TheamContext.Provider>
