@@ -8,10 +8,9 @@ import instance from '../utils/Api.jsx';
 
 const Add = () => {
 
+  
   const [todos, setTodos] = useContext(TodoContext);
     // add on backend and also update todos of usecontest
-    
-
   const [add, setAdd] = useState(false);
   
 
@@ -32,7 +31,7 @@ const Add = () => {
         setTodos(todoData);
 
       } catch (error) {
-        console.error("Error occurred while editing:", error);
+        console.error("Error occurred while adding:", error);
       }
     } 
     

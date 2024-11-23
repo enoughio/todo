@@ -12,6 +12,9 @@ function Action({ text, preVal, show, action }) {
 
       if (inputValue.length === 0) {
         throw new Error("Please enter valid data.");    
+        show(null); 
+        return;
+        
       }
 
       // Call the action function if provided
