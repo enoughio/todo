@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./todo.css";
 import instance from "../../utils/Api";
-import { Link, useNavigate } from "react-router-dom";
 import Action from "./Action";
 
 function Todo({ task, handelDeletion }) {
