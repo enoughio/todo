@@ -9,6 +9,19 @@
     
 }
 
+
+#addTodoText{
+    height: 5vh;
+    border: 2px solid black;
+    border-radius: .81rem;
+    padding: 4px 10px;
+    font-size: 1.2rem;
+}
+
+#addTodoText::placeholder {
+    color: #978985;  /* Change this to the color you want */
+  }
+
  #textBox{
     width: 100%;
     height: 5vh;
@@ -16,6 +29,7 @@
     border-radius: .81rem;
     padding: 4px 10px;
     font-size: 1.2rem;
+   
 }
 
 #textBox:active{

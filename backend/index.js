@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001'); // Allow requests from your frontend's origin
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from your frontend's origin
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Specify allowed HTTP methods
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Specify allowed headers
     next();
@@ -24,6 +24,8 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // Use routes
+
+
 app.use("/", todoRoutes);
 
 // Start the server
