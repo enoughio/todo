@@ -1,10 +1,7 @@
 {
   "short_name": "Todo App",
-<<<<<<< HEAD
   "name": "Todo App",
-=======
-  "name": "Todo app",
->>>>>>> origin/React
+
   "icons": [
     {
       "src": "todo.png",
