@@ -13,9 +13,9 @@ const App = () => {
   }, [isDarkTheme]);
 
   return (
-    <div className={`app`}>
+    <div className="app">
       <ViewProvider>
-        <button className="theme_btn" onClick={toggleTheme}>Theme</button> {/* Correct button */}
+        <button className="theme_btn" onClick={toggleTheme}>{(isDarkTheme ? 'Dark' : 'Light')}</button> {/* Correct button */}
         <Container />
         <Add />
       </ViewProvider>

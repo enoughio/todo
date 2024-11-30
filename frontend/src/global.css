@@ -1,10 +1,10 @@
 [data-theme="light"] {
     /* Theme Variables */
-    --primary-color: #4CAF50;
-    --secondary-color: #FFC107;
-    --background-color: #f4f4f4;
-    --trinary-color: #ffffff;
-    --text-color: #333;
+    --primary-color: 		hsl(200, 100%, 50%);
+    --secondary-color: 		hsl(200, 100%, 40%);
+    --background-color: 		hsl(200, 100%, 80%);
+    --trinary-color: 	hsl(200, 100%, 70%);
+    --text-color: 		hsl(200, 100%, 10%);
     
     /* Transition for smooth theme changes */
     --transition-time: 0.3s ease;
@@ -12,11 +12,11 @@
   
 [data-theme="dark"] {
     /* Theme Variables */
-    --primary-color: #7c917d;
-    --secondary-color: #8a7e58;
-    --background-color: #3b3333;
-    --trinary-color: #375e8a;
-    --text-color: #6e4343;
+    --primary-color: 	hsl(209, 77%, 60%);
+    --secondary-color: 	hsl(209, 77%, 17%);
+    --background-color: 	hsl(209, 77%, 40%);
+    --trinary-color: 	hsl(209, 77%, 30%);
+    --text-color: 	hsl(209, 77%, 20%);
     
     /* Transition for smooth theme changes */
     --transition-time: 0.3s ease;
