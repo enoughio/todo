@@ -10,14 +10,14 @@ import { Analytics } from "@vercel/analytics/react"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <BrowserRouter>
-        <TodoProvider>
-            <TheamProvider>
-                 <Analytics >
-                <App />
-                </ Analytics >
-            </TheamProvider>
-        </TodoProvider>
-    </BrowserRouter>
+    <Analytics >
+        <BrowserRouter>
+            <TodoProvider>
+                <TheamProvider>
+                    <App />
+                </TheamProvider>
+            </TodoProvider>
+        </BrowserRouter>
+    </ Analytics >
 
 );
