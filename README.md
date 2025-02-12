@@ -1,5 +1,3 @@
-Here’s a simple and concise README for your project:
-
 ---
 
 # Todo List Templating Project
@@ -102,7 +100,6 @@ Feel free to clone, explore, and build on top of it!
 To-Do List API Documentation
 
 Base URL:
-arduino
 Copy code
 http://localhost:3000 (or your production domain)
 Endpoints
